@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "AppointmentList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using System.Data
+@model DataTable
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-10">
+            <h3>Appointment List</h3>
+        </div>
+
+        <div class="col-md-2">
+            <a asp-controller="Appointment" asp-action="Add" class="btn btn-success">Add Appointment</a>
+        </div>
+    </div>
+    <hr />
+
+</div>
+
+<table class="table table-responsive table-sm">
+    <thead>
+        <tr>
+            <th>Patient Name</th>
+            <th>Doctor Name</th>
+            <th>Appointment Type</th>
+            <th>AppointmentDate</th>
+            <th>AppointmentTime</th>
+            <th>Disease</th>
+            <th>Created</th>
+            <th>Modified</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (DataRow dr in Model.Rows)
+        {
+            <tr>
+                <td>@dr["Name"]</td>
+                <td>@dr["DName"]</td>
+                <td>@dr["AppointmentType"]</td>
+                <td>@dr["AppointmentDate"]</td>
+                <td>@dr["AppointmentTime"]</td>
+                <td>@dr["DiseaseName"]</td>
+                <td>@Convert.ToDateTime(dr["Created"]).ToString("dd-MM-yyyy")</td>
+                <td>@Convert.ToDateTime(dr["Modified"]).ToString("dd-MM-yyyy")</td>
+                <td>
+                    <form method="post" asp-area="Appointment" asp-controller="Appointment" asp-action="Delete">
+                        <input type="hidden" name="AppointmentID" value="@Convert.ToInt32(dr["AppointmentID"])">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+                        <a class="btn btn-danger" asp-area="Appointment" asp-controller="Appointment" asp-action="Add" asp-route-Appointmentid="@Convert.ToInt32(dr["AppointmentID"])">Update</a>
+                    </form>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+

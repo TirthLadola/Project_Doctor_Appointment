@@ -1,0 +1,276 @@
+﻿@{
+    ViewData["Title"] = "Patient Add/Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model Project_Doctor_Appointment.Areas.Patient.Models.PatientModel
+
+@*<div class="row">
+    <div class="col-md-12">
+        <h2>@TempData["PatientInsertMsg"]</h2>
+        <form method="post" asp-controller="Patient" asp-action="Save">
+            @Html.HiddenFor(x=>x.PatientID)
+            <div class="form-group">
+                <label>Patient Name</label>
+                <input type="text" placeholder="Enter Patient Name" asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Mobile No</label>
+                <input type="text" placeholder="Enter Patient Name" asp-for="MobileNo" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Birth Date</label>
+                <input type="date" placeholder="Enter Patient Name" asp-for="BirthDate" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" placeholder="Enter Patient Name" asp-for="Email" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" placeholder="Enter Patient Name" asp-for="Address" class="form-control" />
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="my-1"><span class="text-danger">*</span>Disease Name</label>
+                <select class="form-control" asp-for="DiseaseID" asp-items="@(new SelectList( ViewBag.DiseaseList,"DiseaseID","DiseaseName"))">
+                    <option value="">Select Disease</option>
+                </select>
+                <span asp-validation-for="DiseaseID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <input type="text" placeholder="Enter Patient Name" asp-for="Gender" class="form-control" />
+            </div>
+
+            <div class ="form-group col-3">
+                <label for ="inputState">
+                    <span class ="text-danger">
+                        *</span>Blood Group</label>
+                        <select class ="form-control"  asp-for="BloodGroup">
+                            <option selected>
+                                Choose Blood Group</option>
+                                <option value ="None">
+                                    None</option>
+                                    <option value ="A+">
+                                        A RhD positive (A+)</option>
+                                        <option value ="A-">
+                                            A RhD negative (A-)</option>
+                                            <option value ="B+">
+                                                B RhD positive (B+)</option>
+                                                <option value ="B-">
+                                                    B RhD negative (B-)</option>
+                                                    <option value ="O+">
+                                                        O RhD positive (O+)</option>
+                                                        <option value ="O-">
+                                                            O RhD negative (O-)</option>
+                                                            <option value ="AB+">
+                                                                AB RhD positive (AB+)</option>
+                                                                <option value ="AB-">
+                                                                    AB RhD negative (AB-)</option>
+                                                                    </select>
+                                                                    <span asp-validation-for ="BloodGroup"  class="text-danger"></span>
+    </div>
+
+            <div class="form-group">
+                <label>Weight</label>
+                <input type="text" placeholder="Enter Patient Code" asp-for="Weight" class="form-control" />
+            </div>
+            <hr />
+
+            <input type="submit" class="btn btn-success" />
+
+        </form>
+
+    </div>
+
+</div>*@
+
+
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+
+        <!-- Basic Layout -->
+        <div class="row">
+
+            <div class="col-xl">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Basic with Icons</h5>
+                        <small class="text-muted float-end">Merged input group</small>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" asp-controller="Patient" asp-action="Save">
+                            @Html.HiddenFor(x=>x.PatientID)
+
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-fullname">Patient Name</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-fullname2" class="input-group-text">
+                                        <i class="bx bx-user"></i>
+                                    </span>
+                                    <input type="text" placeholder="Enter Patient Name" asp-for="Name" class="form-control" />
+
+                                </div>
+                            </div>
+                           
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-phone">MobileNo</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-phone2" class="input-group-text">
+                                        <i class="bx bx-phone"></i>
+                                    </span>
+                                    <input type="text" placeholder="Enter Patient Name" asp-for="MobileNo" class="form-control" />
+
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-email">BirthDate</label>
+                                <div class="input-group input-group-merge">
+                                    <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                                    <input type="date" placeholder="Enter Patient Name" asp-for="BirthDate" class="form-control" />
+
+                                </div>
+                                <div class="form-text">You can use letters, numbers & periods</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-phone">Email</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-phone2" class="input-group-text">
+                                        <i class="bx bx-phone"></i>
+                                    </span>
+                                    <input type="text" placeholder="Enter Patient Name" asp-for="Email" class="form-control" />
+
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-message">Address</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-message2" class="input-group-text">
+                                        <i class="bx bx-comment"></i>
+                                    </span>
+                                    <input type="text" placeholder="Enter Patient Name" asp-for="Address" class="form-control" />
+
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-message">Disease Name</label>
+                                <div class="input-group input-group-merge">
+                                  <select class="form-control" asp-for="DiseaseID" asp-items="@(new SelectList( ViewBag.DiseaseList,"DiseaseID","DiseaseName"))">
+                                      <option value="">Select Disease</option>
+                                  </select>
+                                    <span asp-validation-for="DiseaseID" class="text-danger"></span>
+
+                                </div>
+                            </div>
+
+
+                             <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-message">Gender</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-message2" class="input-group-text">
+                                        <i class="bx bx-comment"></i>
+                                    </span>
+                                    <input type="text" placeholder="Enter Patient Name" asp-for="Gender" class="form-control" />
+
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-message">Blood Group</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-message2" class="input-group-text">
+                                        <i class="bx bx-comment"></i>
+                                    </span>
+                                    <select class ="form-control"  asp-for="BloodGroup">
+                                        <option selected>
+                                            Choose Blood Group</option>
+                                            <option value ="None">
+                                                None</option>
+                                                <option value ="A+">
+                                                    A RhD positive (A+)</option>
+                                                    <option value ="A-">
+                                                        A RhD negative (A-)</option>
+                                                        <option value ="B+">
+                                                            B RhD positive (B+)</option>
+                                                            <option value ="B-">
+                                                                B RhD negative (B-)</option>
+                                                                <option value ="O+">
+                                                                    O RhD positive (O+)</option>
+                                                                    <option value ="O-">
+                                                                        O RhD negative (O-)</option>
+                                                                        <option value ="AB+">
+                                                                            AB RhD positive (AB+)</option>
+                                                                            <option value ="AB-">
+                                                                                AB RhD negative (AB-)</option>
+                                                                                </select>
+                                                                                <span asp-validation-for ="BloodGroup"  class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-message">Weight</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-message2" class="input-group-text">
+                                        <i class="bx bx-comment"></i>
+                                    </span>
+                                    <input type="text" placeholder="Enter Patient Code" asp-for="Weight" class="form-control" />
+
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Content -->
+    <!-- Footer -->
+    <footer class="content-footer footer bg-footer-theme">
+        <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+            <div class="mb-2 mb-md-0">
+                ©
+                <script>
+                    document.write(new Date().getFullYear());
+                </script>
+                , made with ❤️ by
+                <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+            </div>
+            <div>
+                <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+                <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                   target="_blank"
+                   class="footer-link me-4">Documentation</a>
+
+                <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                   target="_blank"
+                   class="footer-link me-4">Support</a>
+            </div>
+        </div>
+    </footer>
+    <!-- / Footer -->
+
+    <div class="content-backdrop fade"></div>
+</div>
+<!-- Content wrapper -->
+        </div>

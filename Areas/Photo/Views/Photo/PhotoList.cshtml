@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "PhotoList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using System.Data
+@model DataTable
+
+
+
+
+<div class="content-wrapper">
+    <h4 class="fw-bold py-3 mb-1"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3>Photo List</h3>
+                </div>
+
+                <div class="col-md-2">
+                    <a asp-controller="Photo" asp-action="Add" class="btn btn-success">Add Photo</a>
+                </div>
+            </div>
+            <hr />
+
+        </div>
+
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>PhotoPath</th>
+                            <th>Name</th>
+                            <th>Created</th>
+                            <th>Modified</th>
+                        </tr>
+
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (DataRow dr in Model.Rows)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <img src="@Url.Content(dr["PhotoPath"].ToString())" alt="@dr["Name"]" style="height:40px; width:40px; border-radius:50%;"   /></td>
+                                <td>@dr["Name"]</td>
+                                <td>@Convert.ToDateTime(dr["Created"]).ToString("dd-mm-yyyy")</td>
+                                <td>@Convert.ToDateTime(dr["Modified"]).ToString("dd-mm-yyyy")</td>
+                                <td>
+                                    <form method="post" asp-area="Photo" asp-controller="Photo" asp-action="Delete">
+                                        <input type="hidden" name="PhotoID" value="@Convert.ToInt32(dr["PhotoID"])">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+                                        <a class="btn btn-danger" asp-area="Photo" asp-controller="Photo" asp-action="Add" asp-route-Photoid="@Convert.ToInt32(dr["PhotoID"])">Update</a>
+                                    </form>
+                                </td>
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/ Basic Bootstrap Table -->
+    </div>
+</div>
